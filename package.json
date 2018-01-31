@@ -1,0 +1,19 @@
+{
+  "name": "greedy-list",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "cl": "bin/cl.js"
+  },
+  "author": "Haowen <haowen737@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.13.0",
+    "ts-loader": "^3.4.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
+  }
+}
