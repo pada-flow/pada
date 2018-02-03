@@ -1,2 +1,4 @@
 # pada
-Pada💥is a terminal version todo list.
+
+> Pada💥is a terminal version todo list.
+
