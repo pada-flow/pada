@@ -9,6 +9,11 @@
   "bin": {
     "pa": "dist/pada.js"
   },
+  "keywords": [
+    "pada",
+    "pada-todo-list",
+    "node-todo-list"
+  ],
   "author": "Haowen <haowen737@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -18,6 +23,7 @@
     "cli-table2": "^0.2.0",
     "commander": "^2.13.0",
     "moment": "^2.20.1",
+    "node-timeter": "^1.0.4",
     "ts-loader": "^3.4.0",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0"
