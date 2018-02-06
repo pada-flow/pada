@@ -51,3 +51,5 @@ const list = () => {
 }
 
 module.exports = list
+// export default list
+module.exports.default = list

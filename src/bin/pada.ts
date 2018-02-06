@@ -1,28 +1,27 @@
 import program = require('commander')
 
+const actionList = require('../lib/list')
+const actionAdd = require('../lib/add')
+const version = require('./../../package.json')['version']
 const nodeVersion: string = process.version.match(/\d+/g)[0]
-const text: string = '123'
 
 program
-  .version('0.0.1', '-v, --version')
+  .version(version, '-v, --version')
   .usage('<command> [options]')
 
 program
-  .command('ls, --list', 'Show To Do List')
+  .command('ls')
+  .description('list all your tasks')
   .action((name, cmd) => {
-    require('../lib/list')(name, cleanArgs(cmd))
+    actionList()
+  })
+
+program
+  .command('add')
+  .description('add a task in your list')
+  .action(() => {
+    actionAdd()
   })
 
 program.parse(process.argv)
-function cleanArgs (cmd) {
-  const args = {}
-  cmd.options.forEach(o => {
-    const key = o.long.replace(/^--/, '')
-    // if an option is not present and Command has a method with the same name
-    // it should not be copied
-    if (typeof cmd[key] !== 'function') {
-      args[key] = cmd[key]
-    }
-  })
-  return args
-}
+
