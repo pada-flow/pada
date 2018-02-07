@@ -4,7 +4,7 @@ const moment = require('moment')
 // const Timeter = require('./../../../node-stopwatch')
 const Timeter = require('node-timeter')
 const { tableConf, todoStatus, todoPriority } = require('./../customConfig')
-const { printf } = require('./../utils')
+const { printf } = require('utils')
 
 const timeter = new Timeter()
 timeter.start()
@@ -42,14 +42,6 @@ store.map(row => table.push(renderRow(row)))
 
 const renderSummary = () => `${table.length} rows total, rendered in ${timeter.stop()}ms`
 
-const list = () => {
-  return (
-    printf(chalk.blue('This is your list 🍻 ')),
-    printf(table.toString()),
-    printf(renderSummary())
-  )
-}
-
-module.exports = list
-// export default list
-module.exports.default = list
+printf(chalk.blue('This is your list 🍻 ')),
+printf(table.toString()),
+printf(renderSummary())

@@ -3,9 +3,14 @@ const webpack = require('webpack');
 
 module.exports = {
   devtool: 'inline-source-map',
-  entry: './src/bin/pada.ts',
+  entry: {
+    'pada': './src/bin/pada.ts',
+    'pada-add': './src/bin/pada-add.ts',
+    'pada-list': './src/bin/pada-list.ts',
+  },
   target: 'node',
-  output: {    filename: 'pada.js',
+  output: {
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   node: {
@@ -15,7 +20,10 @@ module.exports = {
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: ['.ts', '.tsx', '.js'],
-    modules: ["node_modules"]
+    modules: ["node_modules"],
+    alias: {
+      utils: path.resolve(__dirname, 'src/utils')
+    }
   },
   module: {
     rules: [
