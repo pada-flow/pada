@@ -1,13 +1,15 @@
-const chalk = require('chalk')
+import { printf } from '../utils'
+import chalk from 'chalk'
 const Table = require('cli-table2')
 const moment = require('moment')
 // const Timeter = require('./../../../node-stopwatch')
 const Timeter = require('node-timeter')
-const { tableConf, todoStatus, todoPriority } = require('./../customConfig')
-const { printf } = require('utils')
+const { tableConf, TODO_STATUS, TODO_PPRIOROTY } = require('./../customConfig')
 
 const timeter = new Timeter()
 timeter.start()
+
+console.log('printf-->', printf)
 
 const table = new Table(tableConf);
 
@@ -26,9 +28,9 @@ const store = [
   }
 ]
 
-const renderStatus = (index: number) => todoStatus[index]
+const renderStatus = (index: number) => TODO_STATUS[index]
 
-const renderPriority = (rate: number) => `[${todoPriority[rate]}]`
+const renderPriority = (rate: number) => `[${TODO_PPRIOROTY[rate]}]`
 
 const renderNotes = (priority: number, notes: string) => `${renderPriority(priority)}${notes}`
 

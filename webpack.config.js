@@ -20,7 +20,7 @@ module.exports = {
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: ['.ts', '.tsx', '.js'],
-    modules: ["node_modules"],
+    modules: ['node_modules'],
     alias: {
       utils: path.resolve(__dirname, 'src/utils')
     }
@@ -28,10 +28,16 @@ module.exports = {
   module: {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { test: /\.tsx?$/, loader: 'ts-loader' }
+      { test: /\.tsx?$/, loader: 'ts-loader' },
+      {
+        test: /\.ts$/,
+        enforce: 'pre',
+        loader: 'tslint-loader',
+        options: { /* Loader options go here */ }
+      }
     ]
   },
   plugins: [
-    new webpack.BannerPlugin({banner: '#!/usr/bin/env node', raw: true })
+    new webpack.BannerPlugin({ banner: '#!/usr/bin/env node', raw: true })
   ]
 }
