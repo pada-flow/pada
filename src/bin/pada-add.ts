@@ -1,6 +1,6 @@
 import { printf } from '../utils'
 import chalk from 'chalk'
-import Task from '../customTyping'
+import Task from '../utils/customTyping'
 // const program = require('commander')
 const inquirer = require('inquirer')
 const moment = require('moment')

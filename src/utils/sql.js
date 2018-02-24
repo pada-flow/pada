@@ -3,9 +3,13 @@ const path = require('path')
 const sql = require('sql.js')
 
 const PATH_TO_DB = path.resolve(__dirname, '../../db/pada.db')
-const dbBuffer = fs.readFileSync(PATH_TO_DB)
+const dbBuffer = fs.existsSync(PATH_TO_DB)
+  ? fs.readFileSync(PATH_TO_DB)
+  : null
 
 const db = new sql.Database(dbBuffer)
+
+console.log(db)
 
 // let sqlstr = "CREATE TABLE hello (a int, b char);"
 // sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
