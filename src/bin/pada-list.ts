@@ -4,14 +4,14 @@ const Table = require('cli-table2')
 const moment = require('moment')
 // const Timeter = require('./../../../node-stopwatch')
 const Timeter = require('node-timeter')
-const { tableConf, TODO_STATUS, TODO_PPRIOROTY } = require('./../customConfig')
+const { TABLE_CONF, TODO_STATUS, TODO_PPRIOROTY } = require('./../customConfig')
 
 const timeter = new Timeter()
 timeter.start()
 
 console.log('printf-->', printf)
 
-const table = new Table(tableConf);
+const table = new Table(TABLE_CONF);
 
 const store = [
   {

@@ -29,4 +29,4 @@ console.log('result--->', result); // Will print {a:1, b:'world'}
 
 const data = db.export()
 const buffer = new Buffer(data)
-fs.writeFileSync(PATH_TO_DB)
+fs.writeFileSync(PATH_TO_DB, buffer)

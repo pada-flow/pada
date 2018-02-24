@@ -1,9 +1,7 @@
 import { printf } from '../utils'
 import chalk from 'chalk'
-
-// const fs = require('fs')
+import Task from '../customTyping'
 // const program = require('commander')
-// const { Task } = require('./../customTyping')
 const inquirer = require('inquirer')
 const moment = require('moment')
 const { ADD_STEP } = require('./../customConfig')
@@ -30,7 +28,13 @@ const cancelStore = () => {
   process.exit(1)
 }
 
-const confirmStore = (task) => {
+const confirmStore = (answers) => {
+  const task = new Task({
+    status: 0,
+    content: answers.notes,
+    alarm: answers.date,
+    priority: answers.priority
+  })
   const result = dispatchTask(task)
   console.log('result--->', result)
 }
@@ -52,3 +56,4 @@ inquirer
   .prompt(inquireAdd)
   .then(answers => { store(answers)})
 
+// confirmStore({})

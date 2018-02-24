@@ -5,7 +5,7 @@ interface TaskOption {
   priority: number
 }
 
-export class Task {
+export default class Task {
   readonly status: number
   readonly content: string
   readonly alarm: Date
