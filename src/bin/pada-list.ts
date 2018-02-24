@@ -1,5 +1,8 @@
 import { printf } from '../utils'
 import chalk from 'chalk'
+import TaskDB from '../utils/taskDB'
+import { SIRI } from '../utils/customTyping'
+
 const Table = require('cli-table2')
 const moment = require('moment')
 // const Timeter = require('./../../../node-stopwatch')
@@ -9,24 +12,11 @@ const { TABLE_CONF, TODO_STATUS, TODO_PPRIOROTY } = require('./../customConfig')
 const timeter = new Timeter()
 timeter.start()
 
-console.log('printf-->', printf)
-
 const table = new Table(TABLE_CONF);
 
-const store = [
-  {
-    status: 0,
-    priority: 0,
-    notes: 'notesss',
-    time: new Date()
-  },
-  {
-    status: 0,
-    priority: 0,
-    notes: 'notesss',
-    time: new Date()
-  }
-]
+const taskDB = new TaskDB()
+
+const tasks: Array<any> = taskDB.read()
 
 const renderStatus = (index: number) => TODO_STATUS[index]
 
@@ -35,15 +25,15 @@ const renderPriority = (rate: number) => `[${TODO_PPRIOROTY[rate]}]`
 const renderNotes = (priority: number, notes: string) => `${renderPriority(priority)}${notes}`
 
 const renderRow = (row) => [
-  renderStatus(row.status),
-  renderNotes(row.priority, row.notes),
-  moment(row.time).format('YYYY/MM/DD HH:ss')
+  renderStatus(row[1]),
+  renderNotes(row[4], row[2]),
+  moment(row[3]).format('YYYY/MM/DD HH:ss')
 ]
 
-store.map(row => table.push(renderRow(row)))
+tasks.map(row => table.push(renderRow(row)))
 
-const renderSummary = () => `${table.length} rows total, rendered in ${timeter.stop()}ms`
+const renderSummary = () => SIRI.SUMMARY(table.length, timeter.stop())
 
-printf(chalk.blue('This is your list 🍻 ')),
+printf(SIRI.LIST()),
 printf(table.toString()),
 printf(renderSummary())

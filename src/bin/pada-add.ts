@@ -1,11 +1,16 @@
 import { printf } from '../utils'
+import { Task, SIRI } from '../utils/customTyping'
 import chalk from 'chalk'
-import Task from '../utils/customTyping'
+import TaskDB from '../utils/taskDB'
+
+
 // const program = require('commander')
 const inquirer = require('inquirer')
 const moment = require('moment')
 const { ADD_STEP } = require('./../customConfig')
 const dispatchTask = require('../utils/dispatchTask')
+
+const taskDB = new TaskDB()
 
 const validateNotes = (val) => !!val
 
@@ -23,23 +28,25 @@ const inquireAdd = [
   Object.assign(ADD_STEP.DATE, { validate: validateDate, default: moment().format('YYYY-MM-DD HH:mm:ss') })
 ]
 
-const cancelStore = () => {
+const leave = () => {
   printf('Add task canceled')
   process.exit(1)
 }
 
-const confirmStore = (answers) => {
+const write = (answers) => {
+  console.log('write--->', answers)
   const task = new Task({
     status: 0,
     content: answers.notes,
     alarm: answers.date,
-    priority: answers.priority
+    priority: answers.priority.length
   })
-  const result = dispatchTask(task)
-  console.log('result--->', result)
+  taskDB.add(task)
+  // const result = dispatchTask(task)
+  console.log('add result--->')
 }
 
-const store = (answers) => {
+const confirmWrite = (answers) => {
   const { notes, priority, date } = answers
   const message = `Preparing store task: \nnotes: ${chalk.blue(notes)} \npriority: ${priority}\ndate: ${chalk.magenta(date)}\nConfirm to store? `
   const confirm = [{ ...ADD_STEP.CONFIRM, message }]
@@ -47,13 +54,13 @@ const store = (answers) => {
     .prompt(confirm)
     .then(
       con => con.yes
-      ? confirmStore(answers)
-      : cancelStore()
+      ? write(answers)
+      : leave()
     )
 }
 
 inquirer
   .prompt(inquireAdd)
-  .then(answers => { store(answers)})
+  .then(answers => { confirmWrite(answers)})
 
-// confirmStore({})
+// write({})
