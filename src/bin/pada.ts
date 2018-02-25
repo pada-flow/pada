@@ -1,12 +1,23 @@
 import program = require('commander')
 
-const { DEFAULT, ADD, ADD_DESC, LIST, LIST_DESC } = require('./../commandList')
+const { DEFAULT, ADD, ADD_DESC, LIST, LIST_DESC, DEL, DEL_DESC, DEL_OPTION, DEL_OPTION_DESC } = require('./../commandList')
 const version = require('./../../package.json')['version']
 const nodeVersion: string = process.version.match(/\d+/g)[0]
 
 program
   .version(version, '-v, --version')
-  .command(LIST, LIST_DESC, DEFAULT)
+
+program
+  .command(LIST, LIST_DESC)
+  .alias('ls')
+
+program
   .command(ADD, ADD_DESC)
-  .parse(process.argv)
+  .alias('a')
+
+program
+  .command(DEL, DEL_DESC)
+  .alias('d')
+
+program.parse(process.argv)
 

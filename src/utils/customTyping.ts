@@ -1,5 +1,3 @@
-import chalk from 'chalk'
-
 interface TaskOption {
   status: number
   content: string
@@ -21,20 +19,6 @@ class Task {
   }
 }
 
-const SQL = {
-  CREATE: () => 'CREATE TABLE task (id INTEGER PRIMARY KEY AUTOINCREMENT, status int, content char, alarm date, priority int);',
-  ADD: (s, c, a, p) => `INSERT INTO task VALUES (null, ${s}, '${c}', '${a}', ${p});`,
-  DEL: (id) => `DELETE FROM task WHERE id=${id};`,
-  READ: () => 'SELECT * FROM task'
-}
-
-const SIRI = {
-  LIST: () => chalk.blue('This is your list 🍻 '),
-  SUMMARY: (l, t) => `${chalk.yellowBright(l)} rows total, rendered in ${chalk.blueBright(t)}ms`
-}
-
 export {
-  Task,
-  SQL,
-  SIRI
+  Task
 }

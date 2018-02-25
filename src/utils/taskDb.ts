@@ -1,6 +1,7 @@
 import chalk from 'chalk'
 import { printf } from '../utils'
-import { Task, SQL } from './customTyping'
+import { Task } from './customTyping'
+import { SQL } from './customConfig'
 
 const fs = require('fs')
 const path = require('path')
@@ -30,7 +31,6 @@ class taskDB {
 
   add (task: Task) {
     const { status, content, alarm, priority } = task
-    console.log(status, content, alarm, priority)
     const sqlstr = SQL.ADD(status, content, alarm, priority)
     this.db.run(sqlstr)
     this.close()
@@ -39,8 +39,14 @@ class taskDB {
   update () {}
 
   del (id: number) {
+    printf(`deleting task id ${id}...`)
     const sqlstr = SQL.DEL(id)
     this.db.run(sqlstr)
+    this.close()
+  }
+
+  delAll () {
+    printf(`deleting all task...`)
   }
 
   read () {

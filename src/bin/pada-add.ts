@@ -1,5 +1,6 @@
 import { printf } from '../utils'
-import { Task, SIRI } from '../utils/customTyping'
+import { Task } from '../utils/customTyping'
+import { SIRI, ADD_STEP } from '../utils/customConfig'
 import chalk from 'chalk'
 import TaskDB from '../utils/taskDB'
 
@@ -7,12 +8,9 @@ import TaskDB from '../utils/taskDB'
 // const program = require('commander')
 const inquirer = require('inquirer')
 const moment = require('moment')
-const { ADD_STEP } = require('./../customConfig')
 const dispatchTask = require('../utils/dispatchTask')
 
 const taskDB = new TaskDB()
-
-const validateNotes = (val) => !!val
 
 const validateDate = (val) =>
   moment(new Date(val)).isValid()
@@ -23,7 +21,7 @@ const validatePriority = (val) =>
   || 'Please enter ! or !! or !!!'
 
 const inquireAdd = [
-  Object.assign(ADD_STEP.NOTES, { validate: validateNotes }),
+  ADD_STEP.NOTES,
   Object.assign(ADD_STEP.PRIORITY, { validate: validatePriority, default: '!' }),
   Object.assign(ADD_STEP.DATE, { validate: validateDate, default: moment().format('YYYY-MM-DD HH:mm:ss') })
 ]
@@ -34,7 +32,6 @@ const leave = () => {
 }
 
 const write = (answers) => {
-  console.log('write--->', answers)
   const task = new Task({
     status: 0,
     content: answers.notes,
@@ -43,7 +40,7 @@ const write = (answers) => {
   })
   taskDB.add(task)
   // const result = dispatchTask(task)
-  console.log('add result--->')
+  printf(`'add task ${chalk.greenBright('success')} 🍻 `)
 }
 
 const confirmWrite = (answers) => {
