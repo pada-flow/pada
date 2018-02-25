@@ -55,8 +55,7 @@ const deleteSingleTask = () => {
 const deleteAllTask = () => {
   inquirer
     .prompt(inquireDelAll)
-    .then(con => con.yes && deleteALL()
-    )
+    .then(con => con.yes && deleteALL())
 }
 
 program

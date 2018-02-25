@@ -46,7 +46,9 @@ class taskDB {
   }
 
   delAll () {
-    printf(`deleting all task...`)
+    const taskList = this.read()
+    printf(`start deleting all tasks...`)
+    taskList.map(t => t && this.del(t[0]))
   }
 
   read () {
