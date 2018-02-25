@@ -29,14 +29,14 @@ Simply because pada sounds good!
 
     Usage: pada list || pada ls
 
-[pada-list](./docs/pada-list.png)
+[](./docs/pada-list.png)
 
 ## Create a Task
 
     Usage: pada add || pada a
 
 
-[pada-add](./docs/pada-add.png)
+[](./docs/pada-add.png)
 
 ## Delete a Task
 
@@ -48,4 +48,4 @@ Simply because pada sounds good!
     -a, --all  delete all tasks from database
     -h, --help  output usage information
 
-[pada-add](./docs/pada-del.png)
+[](./docs/pada-del.png)
