@@ -21,7 +21,7 @@ const renderId = (index: number) => index
 
 const renderStatus = (index: number) => TODO_STATUS[index]
 
-const renderPriority = (rate: number) => `[${TODO_PPRIOROTY[rate]}]`
+const renderPriority = (rate: number) => `[${TODO_PPRIOROTY[rate - 1]}]`
 
 const renderNotes = (priority: number, notes: string) => `${renderPriority(priority)}${notes}`
 

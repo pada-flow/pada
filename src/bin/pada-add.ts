@@ -40,7 +40,7 @@ const write = (answers) => {
   })
   taskDB.add(task)
   // const result = dispatchTask(task)
-  printf(`'add task ${chalk.greenBright('success')} 🍻 `)
+  printf(`add task ${chalk.greenBright('success')} 🍻 `)
 }
 
 const confirmWrite = (answers) => {

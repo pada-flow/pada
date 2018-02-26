@@ -1,3 +1,5 @@
+<p align="center"><img src="./docs/pada-banner.jpg"></p>
+
 # pada
 
 > Pada💥is a terminal version todo list.
