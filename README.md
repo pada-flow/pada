@@ -1,4 +1,6 @@
-<p align="center"><img style="width: 50%" src="./docs/pada-banner.jpg"></p>
+<h1 align="center">
+  <img width="320" style="width: 50%" src="./docs/pada-banner.jpg">
+</h1>
 
 # pada
 
