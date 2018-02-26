@@ -1,4 +1,4 @@
-<p align="center"><img src="./docs/pada-banner.jpg"></p>
+<p align="center"><img style="width: 50%" src="./docs/pada-banner.jpg"></p>
 
 # pada
 
