@@ -59,3 +59,7 @@ Crud your todo list without leaving your sweet terminal😌
 
 <!-- [pada-add](./docs/pada-del.png) -->
 <p align="center"><img src="./docs/pada-del.png"></p>
+
+## License
+
+MIT
