@@ -2,13 +2,16 @@
   <img width="320" style="width: 50%" src="./docs/pada-banner.jpg">
 </h1>
 
-# pada
 
 > Pada💥is a terminal version todo list.
 
 ## Why named Pada?
 
 Simply because pada sounds good!
+
+## What can I do with Pada?
+
+Crud your todo list without leaving your sweet terminal😌
 
 ## Usage
 
