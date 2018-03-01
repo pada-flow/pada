@@ -41,6 +41,10 @@ export const DELETE_STEP = {
   ALL: { type: 'confirm', name: 'yes', message: 'Delete all task from database?' }
 }
 
+export const LANG_STEP= {
+  PICK: { type: 'list', name: 'lang', message: 'Pick a language for your pada', choices: ['English', 'Chinese'] }
+}
+
 export const SQL = {
   CREATE: () => 'CREATE TABLE task (id INTEGER PRIMARY KEY AUTOINCREMENT, status int, content char, alarm date, priority int);',
   ADD: (s, c, a, p) => `INSERT INTO task VALUES (null, ${s}, '${c}', '${a}', ${p});`,

@@ -8,6 +8,7 @@ module.exports = {
     'pada-add': './src/bin/pada-add.ts',
     'pada-del': './src/bin/pada-del.ts',
     'pada-update': './src/bin/pada-update.ts',
+    'pada-lang': './src/bin/pada-lang.ts',
     'pada-list': './src/bin/pada-list.ts',
     'sql': './src/utils/taskDB.ts' 
   },

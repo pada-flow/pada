@@ -1,6 +1,8 @@
 import program = require('commander')
 
-const { DEFAULT, ADD, ADD_DESC, LIST, LIST_DESC, DEL, DEL_DESC, DEL_OPTION, DEL_OPTION_DESC } = require('./../commandList')
+const {
+  DEFAULT, ADD, ADD_DESC, LIST, LIST_DESC, DEL, DEL_DESC, DEL_OPTION, DEL_OPTION_DESC, LANG, LANG_DESC
+} = require('./../commandList')
 const version = require('./../../package.json')['version']
 const nodeVersion: string = process.version.match(/\d+/g)[0]
 
@@ -18,6 +20,9 @@ program
 program
   .command(DEL, DEL_DESC)
   .alias('d')
+
+program
+  .command(LANG, LANG_DESC)
 
 program.parse(process.argv)
 
