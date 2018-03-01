@@ -11,6 +11,7 @@ Simply because pada sounds good!
 
 ## What can I do with Pada?
 
+terminal sweet terminal📮
 Crud your todo list without leaving your sweet terminal😌
 
 ## Usage
