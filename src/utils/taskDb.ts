@@ -13,6 +13,8 @@ const dbBuffer = fs.existsSync(PATH_TO_DB)
   ? fs.readFileSync(PATH_TO_DB)
   : null
 
+// user table structure: [id, nickname, email]
+// task table structure: [id, status, content, alarm, priority]
 class taskDB {
   private db: any = new sql.Database(dbBuffer)
 
@@ -21,7 +23,8 @@ class taskDB {
 
   create () {
     const data = this.db
-      .run(SQL.CREATE())
+      .run(SQL.CREATE_TABLE_TASK())
+      .run(SQL.CREATE_TABLE_USER())
       .export()
     const buffer = new Buffer(data)
 
@@ -36,7 +39,26 @@ class taskDB {
     this.close()
   }
 
-  update () {}
+  done (id: number) {
+    const sqlstrTask = SQL.EXIST(id)
+    const sqlstrDone = SQL.DONE(id)   
+    const task = this.db.exec(sqlstrTask)[0]
+    if (!task.values) {
+      printf(`Task ${id} does not exist`)
+      process.exit(1)
+    }
+    this.db.run(sqlstrDone)
+    this.close()
+  }
+
+  updateUser (user) {
+    !dbBuffer && this.create()
+    const { nickname, email } = user
+    console.log(user, 'nickname->', nickname, 'email-->', email)
+    nickname && this.db.exec(SQL.UPDATE_USER_NAME(nickname))
+    email && this.db.exec(SQL.UPDATE_USER_MAIL(email))
+    this.close()
+  }
 
   del (id: number) {
     printf(`deleting task id ${id}...`)
@@ -58,6 +80,14 @@ class taskDB {
     const val = res ? res.values : []
     return val
   }
+
+  readUser () {
+    !dbBuffer && this.create()
+    const res = this.db.exec(SQL.READ_USER())[0]
+    const val = res ? res.values[0] : []
+    return val
+  }
+
   close () {
     const data = this.db.export()
     const buffer = new Buffer(data)

@@ -67,6 +67,4 @@ program.all
   ? deleteAllTask()
   : deleteSingleTask()
 
-
-
 // write({})

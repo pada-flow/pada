@@ -10,6 +10,8 @@ module.exports = {
     'pada-update': './src/bin/pada-update.ts',
     'pada-lang': './src/bin/pada-lang.ts',
     'pada-list': './src/bin/pada-list.ts',
+    'pada-done': './src/bin/pada-done.ts',
+    'pada-config': './src/bin/pada-config.ts',
     'sql': './src/utils/taskDB.ts' 
   },
   target: 'node',
