@@ -68,7 +68,7 @@ Pada is still landing.
 
 Feel free to PR or open issues.
 
-Or discuss pada [here](https://discord.gg/GNJNF) with us!
+Or discuss pada at [discord](https://discord.gg/GNJNF) with us!
 
 ## License
 

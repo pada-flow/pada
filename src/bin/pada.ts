@@ -24,7 +24,7 @@ program
   .version(version, '-v, --version')
 
 program
-  .command(LIST, LIST_DESC)
+  .command(LIST, LIST_DESC, DEFAULT)
   .alias('ls')
 
 program

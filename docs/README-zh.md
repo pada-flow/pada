@@ -67,7 +67,7 @@ Pada还在逐步完善中.
 
 提PR或是issue都是很欢迎的☺️.
 
-或者可以在[这里](https://discord.gg/GNJNF)和大家一起讨论Pada!
+或者可以在[discord](https://discord.gg/GNJNF)和大家一起讨论Pada!
 
 ## License
 

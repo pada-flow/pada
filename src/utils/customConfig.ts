@@ -20,11 +20,15 @@ const chars = {
 
 export const TABLE_CONF = {
   chars,
-  head: ['id', 'Status', 'Notes', 'Alarm'],
-  colWidths: [5, 10, 40, 18]
+  head: ['ID', 'TASK', 'STATUS', 'DUE DATE '],
+  // colWidths: [5, 10, 40, 22]
 }
 
-export const TODO_STATUS = [chalk.yellow('pending'), chalk.greenBright('done'), chalk.redBright('canceled')]
+export const TODO_STATUS = [
+  chalk.yellow('·pending'),
+  chalk.greenBright('·done'),
+  chalk.redBright('·canceled')
+]
 
 export const TODO_PPRIOROTY = ['!', '!!', '!!!']
 
