@@ -1,10 +1,11 @@
 {
   "name": "pada",
-  "version": "0.1.1",
-  "description": "Pada💥is a terminal version todo list.",
+  "version": "0.1.2",
+  "description": "Command line interface for crul your todo list.",
   "scripts": {
     "start": "webpack --config ./webpack.config.js --progress --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config ./webpack.config.js"
   },
   "bin": {
     "pada": "dist/@pada/pada.js"
