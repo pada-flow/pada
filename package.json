@@ -1,6 +1,6 @@
 {
   "name": "pada",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "Command line interface for crul your todo list.",
   "scripts": {
     "start": "webpack --config ./webpack.config.js --progress --watch",
