@@ -19,7 +19,6 @@
   "license": "MIT",
   "dependencies": {
     "@types/cli-table2": "^0.2.1",
-    "@types/moment": "^2.13.0",
     "@types/node": "^9.4.0",
     "chalk": "^2.3.0",
     "cli-table2": "^0.2.0",
