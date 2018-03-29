@@ -4,7 +4,7 @@
 
 > Pada💥is a terminal version todo list.
 
-[英文说明](https://github.com/hoawen737/pada/tree/master/README.md) | [中文说明](https://github.com/hoawen737/pada/tree/master/docs/README-zh.md)
+[英文说明](https://github.com/haowen737/pada/blob/master/README.md) | [中文说明](https://github.com/haowen737/pada/blob/master/docs/README-zh.md)
 
 ## Why named Pada?
 
