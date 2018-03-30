@@ -27,9 +27,9 @@ const renderNotes = (priority: number, notes: string) => `${renderPriority(prior
 
 const renderRow = (row) => [
   renderId(row[0]),
-  renderStatus(row[1]),
   renderNotes(row[4], row[2]),
-  moment(row[3]).format('YYYY/MM/DD HH:ss')
+  renderStatus(row[1]),
+  moment(row[3]).format('YY/MM/DD HH:mm')
 ]
 
 tasks.map(row => table.push(renderRow(row)))

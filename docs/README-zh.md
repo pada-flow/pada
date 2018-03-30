@@ -7,6 +7,10 @@
 
 [英文说明](https://github.com/haowen737/pada/blob/master/README.md) | [中文说明](https://github.com/haowen737/pada/blob/master/docs/README-zh.md)
 
+## Install
+
+```npm i -g pada```
+
 ## 为什么叫Pada?
 
 喔，主要是因为pada听起来很酷，打起来很方便!
@@ -67,7 +71,7 @@ Pada还在逐步完善中.
 
 提PR或是issue都是很欢迎的☺️.
 
-或者可以在[这里](https://discord.gg/GNJNF)和大家一起讨论Pada!
+或者可以在[discord](https://discord.gg/GNJNF)和大家一起讨论Pada!
 
 ## License
 

@@ -6,6 +6,11 @@
 
 [英文说明](https://github.com/haowen737/pada/blob/master/README.md) | [中文说明](https://github.com/haowen737/pada/blob/master/docs/README-zh.md)
 
+
+## Install
+
+```npm i -g pada```
+
 ## Why named Pada?
 
 Simply because pada sounds good!
@@ -68,7 +73,7 @@ Pada is still landing.
 
 Feel free to PR or open issues.
 
-Or discuss pada [here](https://discord.gg/GNJNF) with us!
+Or discuss pada at [discord](https://discord.gg/GNJNF) with us!
 
 ## License
 
