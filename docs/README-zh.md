@@ -7,7 +7,7 @@
 
 [英文说明](https://github.com/haowen737/pada/blob/master/README.md) | [中文说明](https://github.com/haowen737/pada/blob/master/docs/README-zh.md)
 
-## Install
+## 安装
 
 ```npm i -g pada```
 
