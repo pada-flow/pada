@@ -6,6 +6,11 @@
 
 [英文说明](https://github.com/hoawen737/pada/pada/tree/master/README.md) | [中文说明](https://github.com/hoawen737/pada/pada/tree/master/docs/README-zh.md)
 
+
+## Install
+
+```npm i -g pada```
+
 ## Why named Pada?
 
 Simply because pada sounds good!
