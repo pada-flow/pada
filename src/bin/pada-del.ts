@@ -47,8 +47,8 @@ const deleteSingleTask = () => {
     .prompt(inq)
     .then(
       answers => answers.yes || answers.id
-      ? deleteTask(answers)
-      : cancelDel()
+        ? deleteTask(answers)
+        : cancelDel()
     )
 }
 
