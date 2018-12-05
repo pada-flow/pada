@@ -3,10 +3,13 @@
     "sourceMap": true,
     "lib": [
       "es2015"
-    ]
+    ],
+    "outDir": "dist"
   },
   "include": [
-    "src/**/*"
+    "actions/**/*",
+    "bin/**/*",
+    "commands/**/*",
   ],
   "exclude": [
     "node_modules",
