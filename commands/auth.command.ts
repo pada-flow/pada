@@ -9,7 +9,7 @@ export default class AuthCommand extends AbstractCommand {
       .description('Authenticate to Miscosoft AAD')
       .action(async () => {
         const inputs: Input[] = [
-          { name: 'confirm login ', value: '' },
+          { name: 'email', value: '' },
         ]
         await this.action.handle(inputs)
       });
