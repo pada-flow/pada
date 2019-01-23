@@ -2,6 +2,7 @@ import * as inquirer from 'inquirer'
 import { Answers, PromptModule, Question } from 'inquirer'
 import axios from 'axios'
 import * as Ajv from 'ajv'
+import opn = require('opn')
 
 import { AbstractAction } from './abstract.action'
 import { generateBasicInput } from '../lib/prompt/prompt'
@@ -14,11 +15,24 @@ const promptQuestion = async (inputs) => {
   return answers
 }
 
-export default class AuthAction extends AbstractAction {
+export default class LoginAction extends AbstractAction {
   public async handle(inputs) {
-    const answers: Answers = await promptQuestion(inputs)
-    await this.validateEmailPattern(answers)
-    console.log('answers---', answers)
+    // const answers: Answers = await promptQuestion(inputs)
+    // await this.validateEmailPattern(answers)
+    await this.openAADWindow()
+  }
+
+  private openAADWindow() {
+    return new Promise((resolve, reject) => {
+      opn('http://localhost:31544/api/auth/ticket', { app: 'safari', wait: false })
+        .then(() => {
+          resolve()
+        })
+        .catch(() => {
+          console.log('xxx')
+          reject()
+        })
+    })
   }
 
   private validateEmailPattern(answers): Promise<boolean> {

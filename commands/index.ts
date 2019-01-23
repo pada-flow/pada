@@ -2,15 +2,15 @@ import chalk from 'chalk'
 
 import { CommanderStatic } from 'commander'
 
-import AuthCommand from './auth.command'
-import AuthAction from '../actions/auth.action'
+import LoginCommand from './login.command'
+import LoginAction from '../actions/login.action'
 
 import ListCommand from './list.command'
 import ListAction from '../actions/list.action'
 
 export class CommandLoader {
   public static load(program: CommanderStatic): void {
-    new AuthCommand(new AuthAction()).load(program);
+    new LoginCommand(new LoginAction()).load(program);
     new ListCommand(new ListAction()).load(program);
 
     this.handleInvalidCommand(program);

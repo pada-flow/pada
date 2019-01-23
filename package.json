@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint -p .",
     "build": "tsc",
+    "watch": "tsc --watch",
     "postinstall": "node -e \"console.log('\\u001b[32mThanks for using Pada, Enjoy your trip!')\" || exit 0"
   },
   "bin": {
@@ -31,6 +32,7 @@
     "moment": "^2.20.1",
     "node-emoji": "^1.8.1",
     "node-timeter": "^1.0.4",
+    "opn": "^5.4.0",
     "sql.js": "^0.5.0",
     "ts-loader": "^3.4.0",
     "typescript": "^2.6.2",
@@ -38,6 +40,7 @@
   },
   "devDependencies": {
     "@types/inquirer": "0.0.43",
+    "@types/opn": "^5.1.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
