@@ -1,7 +1,11 @@
 import * as inquirer from 'inquirer'
 import { Answers, PromptModule, Question } from 'inquirer'
+import { throttle } from 'lodash'
+import * as os from 'os'
 import axios from 'axios'
 import * as Ajv from 'ajv'
+import * as ora from 'ora'
+import chalk from 'chalk'
 import opn = require('opn')
 
 import { AbstractAction } from './abstract.action'
@@ -14,24 +18,64 @@ const promptQuestion = async (inputs) => {
   const answers: Answers = await prompt(questions)
   return answers
 }
+const spinner = ora(chalk.bold.yellow('Waiting for login...'))
 
 export default class LoginAction extends AbstractAction {
   public async handle(inputs) {
     // const answers: Answers = await promptQuestion(inputs)
     // await this.validateEmailPattern(answers)
-    await this.openAADWindow()
+    spinner.start()
+    const ticket = await this.getTicket()
+    await this.openAADWindow(ticket)
   }
 
-  private openAADWindow() {
+  private async getTicket(): Promise<string> {
     return new Promise((resolve, reject) => {
-      opn('http://localhost:31544/api/auth/ticket', { app: 'safari', wait: false })
+      axios
+        .get('http://localhost:31544/api/auth/ticket')
+        .then(({ data }) => {
+          resolve(data)
+        })
+    })
+  }
+
+  private openAADWindow(ticket): Promise<string> {
+    return new Promise((resolve, reject) => {
+      opn(`http://localhost:31544/api/auth/login?token=${ticket}`, { wait: true })
+      this
+        .pollingLoginStatus()
         .then(() => {
           resolve()
         })
-        .catch(() => {
-          console.log('xxx')
-          reject()
-        })
+    })
+  }
+
+  private pollingLoginStatus(): Promise<boolean> {
+    console.log('--pollingLoginStatus start'
+    )
+    return new Promise(async (resolve, reject) => {
+      const status = await this.loginStatusCheck()
+      if (!status) {
+        this.pollingLoginStatus()
+      } else {
+        resolve()
+      }
+    })
+  }
+
+  /**
+   * 检查登录状态
+   */
+  private loginStatusCheck(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        axios
+          .post('http://localhost:31544/api/auth/status')
+          .then(({ data }) => {
+            console.log('data---', data)
+            resolve(data)
+          })
+      }, 1000)
     })
   }
 
@@ -51,10 +95,6 @@ export default class LoginAction extends AbstractAction {
   }
 
   private login() {
-    axios
-      .get('localhost:31544/login')
-      .then((res) => {
-        console.log('res---', res)
-      })
+    
   }
 }
