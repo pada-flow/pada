@@ -21,14 +21,25 @@ function status(argv: any) {
     .post('http://localhost:31544/api/auth/status', argv)
 }
 
+/**
+ * List all tasks
+ *
+ */
+function list(argv: AxiosRequestConfig) {
+  return axios
+    .get('http://localhost:31544/api/task/list', argv)
+}
+
 interface PadaService {
   ticket: (cogfig?: AxiosRequestConfig) => AxiosPromise,
   status: (data?: any) => AxiosPromise,
+  list: (config?: AxiosRequestConfig) => AxiosPromise,
 }
 
 const PadaService: PadaService = {
   ticket,
   status,
+  list,
 }
 
 export default PadaService
