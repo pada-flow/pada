@@ -17,6 +17,13 @@ import PadaService from '../lib/padaService'
 //   return answers
 // }
 
+interface Token {
+  token_type: string
+  expires_in: string
+  access_token: string
+  scope: string
+}
+
 const ticketManager = new TicketManager()
 const spinner = ora(chalk.bold.yellow('Waiting for login...'))
 
@@ -45,7 +52,7 @@ export default class LoginAction extends AbstractAction {
    * @memberof LoginAction
    */
   private async validateTicket(): Promise<string> {
-    return await PadaService.ticket({ params: { ticket: this.ticket }}).then(({ data: ticket }) => {
+    return await PadaService.ticket().then(({ data: ticket }) => {
       if (ticket !== this.ticket) {
         this.ticket = ticket
         ticketManager.write(ticket)
@@ -77,9 +84,8 @@ export default class LoginAction extends AbstractAction {
     const status = await this.loginStatusCheck()
     if (!status) {
       await this.pollingLoginStatus()
-    } else {
-      return true
     }
+    return true
   }
 
   /**
@@ -87,9 +93,8 @@ export default class LoginAction extends AbstractAction {
    */
   private loginStatusCheck(): Promise<string> {
     return new Promise((resolve, reject) => {
-      const data = { ticket: this.ticket }
       setTimeout(() => {
-        PadaService.status(data).then(({ data }) => {
+        PadaService.status().then(({ data }) => {
           resolve(data)
         })
       }, 1000)
