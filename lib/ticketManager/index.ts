@@ -39,4 +39,5 @@ export default class TicketManeger {
   public write(ticket: string): void {
     jetpack.writeAsync(this.path, ticket)
   }
+
 }

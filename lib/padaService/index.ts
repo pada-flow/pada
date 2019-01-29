@@ -37,16 +37,23 @@ function list(argv: AxiosRequestConfig) {
     .get('http://localhost:31544/api/task/list', {...argv, headers })
 }
 
+function logout(argv: any) {
+  return axios
+    .post('http://localhost:31544/api/auth/logout')
+}
+
 interface PadaService {
   ticket: (cogfig?: AxiosRequestConfig) => AxiosPromise,
   status: (data?: any) => AxiosPromise,
   list: (config?: AxiosRequestConfig) => AxiosPromise,
+  logout: (data?: any) => AxiosPromise
 }
 
 const PadaService: PadaService = {
   ticket,
   status,
   list,
+  logout,
 }
 
 export default PadaService
