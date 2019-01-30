@@ -6,7 +6,6 @@ import { AbstractAction } from './abstract.action'
 
 export default class ListAction extends AbstractAction {
   public async handle(inputs) {
-    const { data } = await PadaService.list()
-    console.log('list', data)
+    const result = await PadaService.list()
   }
 }

@@ -1,8 +1,10 @@
-import axios from 'axios'
+// import * as axios from 'axios'
 import { AxiosPromise, AxiosRequestConfig } from 'axios'
+import { Http } from './http'
 
 import TicketManager from '../ticketManager'
 const ticketManager = new TicketManager()
+const http = new Http()
 
 /**
  * Ticket get
@@ -11,7 +13,7 @@ const ticketManager = new TicketManager()
  */
 function ticket(argv: AxiosRequestConfig) {
   const ticket = ticketManager.read()
-  return axios
+  return http
     .get('http://localhost:31544/api/auth/ticket', { params: { ticket }})
 }
 
@@ -22,7 +24,7 @@ function ticket(argv: AxiosRequestConfig) {
  */
 function status(argv: any) {
   const ticket = ticketManager.read()
-  return axios
+  return http
     .post('http://localhost:31544/api/auth/status', { ticket })
 }
 
@@ -33,12 +35,12 @@ function status(argv: any) {
 function list(argv: AxiosRequestConfig) {
   const ticket = ticketManager.read()
   const headers = {'pada-ticket': ticket}
-  return axios
+  return http
     .get('http://localhost:31544/api/task/list', {...argv, headers })
 }
 
 function logout(argv: any) {
-  return axios
+  return http
     .post('http://localhost:31544/api/auth/logout')
 }
 
